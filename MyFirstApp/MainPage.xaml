@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="MyFirstApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyFirstApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" DataContext="{StaticResource MainDataContext}">
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0C6EBF" Offset="0"/>
+                        <GradientStop Color="#FF83BEEE" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush Stretch="Fill" ImageSource="Assets/keepCalmChristmas.png"/>
+    </Page.Background>
+
+    <Grid Background="{x:Null}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Juleferie om" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding TimeToChristmas}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Julen ringes inn om" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding TimeToChristmasRings}" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock Text="Feriedato" VerticalAlignment="Center" Margin="2"/>
+            <DatePicker Date="{Binding SeletedDate}" MonthFormat="{}{month.integer}" DayFormat="{}{day.integer}" >
+            </DatePicker>
+        </StackPanel>
+
+    </Grid>
+</Page>
